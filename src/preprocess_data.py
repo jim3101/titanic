@@ -35,7 +35,8 @@ def preprocess_fare_data(df):
     # Replace NaNs in Fare column by the average fare for the class
     for index, row in df.iterrows():
         if pd.isna(row['Fare']):
-            average_fare_for_class = np.mean([x['Fare'] for i, x in df.iterrows() if x['Pclass'] == row['Pclass'] and not pd.isna(x['Fare'])])
+            average_fare_for_class = np.mean([x['Fare'] for i, x in df.iterrows() \
+                                              if x['Pclass'] == row['Pclass'] and not pd.isna(x['Fare'])])
             df.loc[index, 'Fare'] = average_fare_for_class
     return df
 

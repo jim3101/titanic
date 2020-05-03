@@ -8,7 +8,7 @@ PATH_TO_TEST_DATA = 'data/test.csv'
 
 def main():
     train_features, target, scaler = get_train_data(PATH_TO_TRAIN_DATA)
-    # evaluate_model(train_features, target)
+    evaluate_model(train_features, target)
     model = fit_model(train_features, target)
 
     passenger_ids, test_features = get_test_data(PATH_TO_TEST_DATA, scaler)

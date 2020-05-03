@@ -14,4 +14,4 @@ def make_predictions(model, test_features):
 def evaluate_model(features, target):
     model = svm.SVC(kernel='poly')
     scores = cross_val_score(model, features, target, cv=10)
-    print('Estimated mean score: {:.2f}%'.format(scores.mean() * 100))
+    print('Estimated score: {:.2f}%'.format(scores.mean() * 100))
