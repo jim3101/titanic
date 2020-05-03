@@ -1,0 +1,4 @@
+.idea/
+data/
+src/__pychache__/*
+notebooks/.ipynb_checkpoints/*
