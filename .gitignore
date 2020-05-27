@@ -1,4 +1,4 @@
 .idea/
 data/
-src/__pychache__/*
-notebooks/.ipynb_checkpoints/*
+src/__pycache__/
+notebooks/.ipynb_checkpoints/

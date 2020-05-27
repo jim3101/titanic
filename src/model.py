@@ -1,17 +1,27 @@
 from sklearn import svm
 from sklearn.model_selection import cross_val_score
+import pandas as pd
+from constants import RESULTS_PATH
 
 
-def fit_model(features, target):
-    model = svm.SVC(kernel='poly')
-    model.fit(features, target)
-    return model
+class Model():
 
-def make_predictions(model, test_features):
-    predictions = model.predict(test_features)
-    return predictions
+    def __init__(self):
+        self.model = svm.SVC(kernel='poly')
 
-def evaluate_model(features, target):
-    model = svm.SVC(kernel='poly')
-    scores = cross_val_score(model, features, target, cv=10)
-    print('Estimated score: {:.2f}%'.format(scores.mean() * 100))
+    def fit(self, train_data_preprocessor):
+        features = train_data_preprocessor.get_features()
+        target = train_data_preprocessor.get_target()
+        self.model.fit(features, target)
+
+    def predict(self, test_data_preprocessor):
+        test_features = test_data_preprocessor.get_features()
+        predictions = self.model.predict(test_features)
+        passenger_ids = test_data_preprocessor.get_passenger_ids()
+        self.store_results(passenger_ids, predictions)
+
+    @staticmethod
+    def store_results(passenger_ids, predictions):
+        results = pd.DataFrame(passenger_ids)
+        results['Survived'] = predictions
+        results.to_csv(RESULTS_PATH, index=False)
