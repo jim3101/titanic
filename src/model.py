@@ -1,5 +1,4 @@
 from sklearn import svm
-from sklearn.model_selection import cross_val_score
 import pandas as pd
 from constants import RESULTS_PATH
 
