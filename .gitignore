@@ -1,4 +1,4 @@
 .idea/
-data/
+data/*.csv
 src/__pycache__/
 notebooks/.ipynb_checkpoints/
