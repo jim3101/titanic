@@ -1,4 +1,4 @@
-from preprocess_data import DataPreprocessor
+from preprocess.preprocess_data import DataPreprocessor
 from model import Model
 
 
